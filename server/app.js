@@ -13,9 +13,12 @@ app.use(cors())
 
 const item = require('./routes/itemsRoute')
 const customer = require('./routes/customersRoute')
+const trans = require('./routes/transactionsRoute')
 
 app.use('/api/item', item)
 app.use('/api/customer', customer)
+app.use('/api/transaction', trans)
+
 
 
 app.listen(3000, () => {

@@ -31,12 +31,15 @@
 			</div>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a data-toggle="modal" data-target="#myModal">
+					<a data-toggle="modal" data-target="#cartModal">
 						<span class="glyphicon glyphicon-shopping-cart"></span> Cart
 						<span>{{itemCounter}}</span>
 					</a>
 				</li>
-				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						<li v-show="userToken == undefined"><a data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+						<li v-show="userToken == undefined"><a data-toggle="modal" data-target="#registerModal"><span class="glyphicon glyphicon-floppy-disk"></span>Regiter</a></li>
+						<li v-show="userToken != undefined"><a data-toggle="modal" data-target="#historyModal"><span class="glyphicon glyphicon-floppy-disk"></span>History</a></li>																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										
+						<li v-show="userToken != undefined"><a v-on:click="userLogout()"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
 			</ul>
 		</div>
 	</div>
@@ -254,9 +257,8 @@
 	</footer>
 
 	<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+	<div id="cartModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
-	
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
@@ -273,7 +275,7 @@
 					<div class="row" v-for="(item, index) in cart">
 						<div class="col-md-1">{{index+1}}</div>
 						<div class="col-md-4">
-								{{getProductById(item.id).item_name}}
+								{{getProductById(item._id).item_name}}
 						</div>
 						<div class="col-md-2">
 							{{item.quantity}}
@@ -291,12 +293,85 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Check Out</button>
+					<button type="button" class="btn btn-default" v-on:click="checkoutItem()">Check Out</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<div id="loginModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Login Toko Pak Haji</h4>
+				</div>
+				<div class="modal-body" >
+					<div class="row">
+						<div class="col-md-6">
+							<span>Username : </span> <input type="text" placeholder="Username" v-model="username">
+							<br/>
+							<span>Password : </span> <input type="password" placeholder="Password" v-model="password">
+							<br/>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" v-on:click="userLogin()">Login</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="registerModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Daftar Toko Pak Haji</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-4">
+							<input type="text" placeholder="Username" v-model="username">
+							<br/>
+							<input type="password" placeholder="Password" v-model="password"> 
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" v-on:click="userRegister()">Register</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="historyModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">History Belanjaan</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row" v-for="item in history">
+						<p>{{item}}</p>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" v-on:click="userRegister()">Register</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>
 <script src="/assets/js/index.js"></script>
 </body>
