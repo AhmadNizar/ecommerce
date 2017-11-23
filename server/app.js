@@ -19,8 +19,6 @@ app.use('/item', item)
 app.use('/customer', customer)
 app.use('/transaction', trans)
 
-
-
 app.listen((process.env.PORT || '3000'), () => {
 	console.log('jalan port 3000 tong');
 })
