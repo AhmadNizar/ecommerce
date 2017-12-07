@@ -11,9 +11,10 @@ var app = new Vue({
     history : []
   },
   created: function () {
-    axios.get('http://localhost:3000/api/item')
-    .then((response) => {
-      this.items = response.data
+    axios.get('http://api.tokopakhaji.tk/item')
+    .then(({data}) => {
+      console.log(data)
+      this.items = data
     })
     .catch(function (error) {
       console.log(error);
@@ -22,7 +23,7 @@ var app = new Vue({
   mounted () {
     if(this.userToken != undefined){
       let userId = localStorage.getItem('userId')
-      axios.get(`http://localhost:3000/api/transaction/${userId}`)
+      axios.get(`http://api.tokopakhaji.tk/transaction/${userId}`)
       .then((response) => {
         console.log(response)
         this.history = response.data
@@ -88,7 +89,7 @@ var app = new Vue({
       })
     },
     checkoutItem () {
-      axios.post('http://localhost:3000/api/transaction', {
+      axios.post('http://api.tokopakhaji.tk/transaction', {
         userId : localStorage.getItem('userId'),
         list : this.cart,
         total : this.total
@@ -102,7 +103,7 @@ var app = new Vue({
     },
     userRegister () {
       console.log('masuk sini')
-      axios.post('http://localhost:3000/api/customer', {
+      axios.post('http://api.tokopakhaji.tk/customer', {
         username : this.username,
         password : this.password
       })
@@ -117,7 +118,7 @@ var app = new Vue({
       })
     },
     userLogin () {
-      axios.post('http://localhost:3000/api/customer/login', {
+      axios.post('http://api.tokopakhaji.tk/customer/login', {
         username : this.username,
         password : this.password
       })
