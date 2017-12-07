@@ -31,15 +31,15 @@
 			</div>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a data-toggle="modal" data-target="#cartModal">
+					<a href="" data-toggle="modal" data-target="#cartModal">
 						<span class="glyphicon glyphicon-shopping-cart"></span> Cart
 						<span>{{itemCounter}}</span>
 					</a>
 				</li>
-						<li v-show="userToken == undefined"><a data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
-						<li v-show="userToken == undefined"><a data-toggle="modal" data-target="#registerModal"><span class="glyphicon glyphicon-floppy-disk"></span>Regiter</a></li>
-						<li v-show="userToken != undefined"><a data-toggle="modal" data-target="#historyModal"><span class="glyphicon glyphicon-floppy-disk"></span>History</a></li>																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										
-						<li v-show="userToken != undefined"><a v-on:click="userLogout()"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+						<li v-show="userToken == undefined"><a href="" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+						<li v-show="userToken == undefined"><a href="" data-toggle="modal" data-target="#registerModal"><span class="glyphicon glyphicon-floppy-disk"></span>Regiter</a></li>
+						<li v-show="userToken != undefined"><a href="" data-toggle="modal" data-target="#historyModal"><span class="glyphicon glyphicon-floppy-disk"></span>History</a></li>																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										
+						<li v-show="userToken != undefined"><a href="" v-on:click="userLogout()"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
 			</ul>
 		</div>
 	</div>
@@ -118,52 +118,6 @@
 				<div class="col-md-3" v-for="item in kidProducts">
 					<div class="panel panel-default">
 						<div class="panel-heading">{{item.item_name}}</div>
-						<div class="panel-body">
-							<img src="assets/images/sandal-santai.jpg" class="img-rounded" alt="Cinque Terre" style="width:70%;"> 
-						</div>
-						<div class="panel-body">
-							<button class="button primary-button">Add to cart</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="sandalSerbaguna" class="tab-pane fade">
-				<div class="col-md-3">
-					<div class="panel panel-default">
-						<div class="panel-heading">Sandal Serba Guna</div>
-						<div class="panel-body">
-							<img src="assets/images/sandal-santai.jpg" class="img-rounded" alt="Cinque Terre" style="width:70%;"> 
-						</div>
-						<div class="panel-body">
-							<button class="button primary-button">Add to cart</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="panel panel-default">
-						<div class="panel-heading">Sandal Serba Guna</div>
-						<div class="panel-body">
-							<img src="assets/images/sandal-santai.jpg" class="img-rounded" alt="Cinque Terre" style="width:70%;"> 
-						</div>
-						<div class="panel-body">
-							<button class="button primary-button">Add to cart</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="panel panel-default">
-						<div class="panel-heading">Sandal Serba Guna</div>
-						<div class="panel-body">
-							<img src="assets/images/sandal-santai.jpg" class="img-rounded" alt="Cinque Terre" style="width:70%;"> 
-						</div>
-						<div class="panel-body">
-							<button class="button primary-button">Add to cart</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="panel panel-default">
-						<div class="panel-heading">Sandal Serba Guna</div>
 						<div class="panel-body">
 							<img src="assets/images/sandal-santai.jpg" class="img-rounded" alt="Cinque Terre" style="width:70%;"> 
 						</div>
@@ -361,8 +315,7 @@
 				</div>
 				<div class="modal-body">
 					<div class="row" v-for="item in history">
-						<p>{{item.item_name}}</p>
-						<p>{{item.item_price}}</p>
+						<p>{{item}}</p>
 					</div>
 				</div>
 				<div class="modal-footer">
